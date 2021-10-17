@@ -29,7 +29,6 @@ print("Let's use", torch.cuda.device_count(), "GPUs!")
 model = model.to(DEVICE)
 
 zhibiao_path ='/home/zhangfuchun/menjingru/dataset/sk_output/sk_zhibiao2'
-# optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9, weight_decay=0.0005)  # 随机梯度下降
 
 torch.cuda.empty_cache()
 
@@ -41,7 +40,7 @@ start = time.clock()
 
 data_path = []
 label_path = []
-for i in range(0, 10):  ### 0,1,2,3,4,5   训练集
+for i in range(0, 8):  ### 0,1,2,3,4,5,6,7   训练集
     data_path.append('/home/zhangfuchun/menjingru/dataset/sk_output/bbox_image/subset%d' % i)
     label_path.append('/home/zhangfuchun/menjingru/dataset/sk_output/bbox_mask/subset%d' % i)
 dataset_train = myDataset(data_path, label_path,annos)  ## 送入dataset
@@ -53,7 +52,7 @@ print("train_dataloader_ok")
 
 data_valid_path = []
 label_valid_path = []
-for j in range(8, 9):  ### 6,7   验证集
+for j in range(8, 9):  ### 8   验证集
     data_valid_path.append('/home/zhangfuchun/menjingru/dataset/sk_output/bbox_image/subset%d' % j)
     label_valid_path.append('/home/zhangfuchun/menjingru/dataset/sk_output/bbox_mask/subset%d' % j)
 dataset_valid = myDataset(data_valid_path, label_valid_path, annos)
@@ -64,7 +63,7 @@ print("valid_dataloader_ok")
 
 data_test_path = []  ### 测试用
 label_test_path = []
-for ii in range(9, 10):  ### 8,9   测试集
+for ii in range(9, 10):  ### 9   测试集
     data_test_path.append('/home/zhangfuchun/menjingru/dataset/sk_output/bbox_image/subset%d' % ii)
     label_test_path.append('/home/zhangfuchun/menjingru/dataset/sk_output/bbox_mask/subset%d' % ii)
 dataset_test = myDataset(data_test_path, label_test_path, annos)
