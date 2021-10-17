@@ -116,7 +116,7 @@ class res_block(nn.Module):  ##nn.Module
         # self.conv1 = r2_block(in_channel=i_channel,out_channel=o_channel).cuda()
         # self.conv2 = r2_block(in_channel=o_channel,out_channel=o_channel).cuda()
         if self.in_c == 1:
-            self.conv1 = nn.Conv3d(in_channels=i_channel, out_channels=o_channel, kernel_size=3, stride=1, padding=1)
+            self.conv1 = r2_block(in_channel=i_channel, out_channel=o_channel).cuda()
         elif self.in_c ==80:
             self.conv1 = r2_block(in_channel=i_channel, out_channel=o_channel).cuda()
         else:
