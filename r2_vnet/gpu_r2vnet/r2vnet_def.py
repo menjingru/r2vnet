@@ -162,9 +162,11 @@ class res_block(nn.Module):  ##nn.Module
         out = self.conv1(x)
         # print(out.shape)         ####记下   torch.Size([1, 16, 192, 160, 160])
         out = self.bn1(out)
-        out = res.add(out)
         out = self.drop(out)
         out = self.prelu(out)
+        
+        out = res.add(out)
+        
         return out
 
     def forward2(self,x ):
@@ -176,10 +178,11 @@ class res_block(nn.Module):  ##nn.Module
         out = self.prelu(out)
         out = self.conv2(out)
         out = self.bn1(out)
-
-        out = res.add(out)
         out = self.drop(out)
         out = self.prelu(out)
+
+        out = res.add(out)
+        
 
         return out
 
@@ -195,10 +198,11 @@ class res_block(nn.Module):  ##nn.Module
         out = self.prelu(out)
         out = self.conv2(out)
         out = self.bn1(out)
-
-        out = res.add(out)
         out = self.drop(out)
         out = self.prelu(out)
+
+        out = res.add(out)
+        
 
         return out
 
